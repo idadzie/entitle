@@ -112,7 +112,8 @@ tomato=""
 eval $(
   xidel -s "$_arg_url" \
     --extract "potato:=css('meta[property=\"og:title\"]')/@content" \
-    --extract "tomato:=css('title')" --output-format bash
+    --extract "tomato:=css('title')" \
+    --output-format bash
 )
 title="${potato:-$tomato}"
 
