@@ -3,7 +3,7 @@
 # This is a rather minimal example Argbash potential
 # Example taken from http://argbash.readthedocs.io/en/stable/example.html
 #
-# ARG_OPTIONAL_BOOLEAN([plain],[],[Do not make markdown compatible])
+# ARG_OPTIONAL_BOOLEAN([squared],[],[Escape square brackets])
 # ARG_POSITIONAL_SINGLE([url],[Web page url],[])
 # ARG_HELP([Get web page title via URL.])
 # ARGBASH_GO()
@@ -33,15 +33,15 @@ begins_with_short_option()
 # THE DEFAULTS INITIALIZATION - POSITIONALS
 _positionals=()
 # THE DEFAULTS INITIALIZATION - OPTIONALS
-_arg_plain="off"
+_arg_squared="off"
 
 
 print_help()
 {
   printf '%s\n' "Get web page title via URL."
-  printf 'Usage: %s [--(no-)plain] [-h|--help] <url>\n' "$0"
+  printf 'Usage: %s [--(no-)squared] [-h|--help] <url>\n' "$0"
   printf '\t%s\n' "<url>: Web page URL"
-  printf '\t%s\n' "--plain, --no-plain: Do not make markdown compatible (off by default)"
+  printf '\t%s\n' "--squared, --no-squared: Escape square brackets (off by default)"
   printf '\t%s\n' "-h, --help: Prints help"
 }
 
@@ -53,9 +53,9 @@ parse_commandline()
   do
     _key="$1"
     case "$_key" in
-      --no-plain|--plain)
-        _arg_plain="on"
-        test "${1:0:5}" = "--no-" && _arg_plain="off"
+      --no-squared|--squared)
+        _arg_squared="on"
+        test "${1:0:5}" = "--no-" && _arg_squared="off"
         ;;
       -h|--help)
         print_help
@@ -117,11 +117,11 @@ eval $(
 )
 title="${potato:-$tomato}"
 
-if [[ "$_arg_plain" == 'on' ]]; then
-  echo $title
-else
-  # Escape square brackets in title; make markdown compatible ;D
+if [[ "$_arg_squared" == 'on' ]]; then
+  # Escape square brackets in title.
   echo $title | sed -e 's/\[\([^]]*\)\]/\\[\1\\]/g'
+else
+  echo $title
 fi
 
 # ] <-- needed because of Argbash
