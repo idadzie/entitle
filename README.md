@@ -71,7 +71,7 @@ Usage: /usr/local/bin/entitle [--(no-)squared] [-h|--help] <url>
 # For the exact title.
 entitle https://www.youtube.com/watch\?v\=dQw4w9WgXcQ
 
-# For markdown friend output.
+# For markdown friendly output.
 # Really it's just escaping the square brackets in some titles.
 entitle --squared https://www.youtube.com/watch\?v\=dQw4w9WgXcQ
 ```
