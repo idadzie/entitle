@@ -21,13 +21,13 @@ You should also ensure you have [make](https://www.gnu.org/software/make) if you
 To install, clone this repository and run `make install`from the source tree.
 
 ```shell
-# Clone the repository
+# Clone this repository.
 git clone https://github.com/idadzie/entitle.git
 
-# Change directory to the source tree
+# Change directory to the source tree.
 cd entitle
 
-# Run make
+# Run make.
 [sudo] make install
 ```
 
@@ -61,19 +61,19 @@ sudo chmod a+rx /usr/local/bin/entitle
 
 ```
 Get web page title via URL.
-Usage: /usr/local/bin/entitle [--(no-)plain] [-h|--help] <url>
+Usage: /usr/local/bin/entitle [--(no-)squared] [-h|--help] <url>
 	<url>: Web page URL
-	--plain, --no-plain: Do not make markdown compatible (off by default)
+	--squared, --no-squared: Escape square brackets (off by default)
 	-h, --help: Prints help
 ```
 
 ```shell
-# For markdown friend output.
-# Really it's just escaping the square brackets in some titles.
+# For the exact title.
 entitle https://www.youtube.com/watch\?v\=dQw4w9WgXcQ
 
-# For the exact title
-entitle https://www.youtube.com/watch\?v\=dQw4w9WgXcQ --plain
+# For markdown friend output.
+# Really it's just escaping the square brackets in some titles.
+entitle --squared https://www.youtube.com/watch\?v\=dQw4w9WgXcQ
 ```
 
 
